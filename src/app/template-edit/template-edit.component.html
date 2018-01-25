@@ -1,0 +1,155 @@
+<div class="page-body template-edit-page">
+    <p>i will always love u chen si qi</p>
+    <div class="attr-panel">
+        <div class="attr-list">
+            <div class="attr-item font-selection">
+                <div class="attr-text">
+
+                    <mat-form-field class="template-name">
+                        <input type="text" matInput [(ngModel)]="template.name" placeholder="模板名称">
+                    </mat-form-field>
+
+                    <mat-select [(ngModel)]="template.product" placeholder="产品" class="template-name" >
+                        <mat-option *ngFor="let product of product_list" [value]="product.name" >
+                            {{product.name}}
+                        </mat-option>
+                    </mat-select>
+
+
+                    <mat-form-field>
+                        <input type="number" matInput [(ngModel)]="template.width" placeholder="标签纸宽度(mm)">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="number" matInput [(ngModel)]="template.height" placeholder="标签纸高度(mm)">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="number" matInput [(ngModel)]="template.gap" placeholder="标签纸间距(mm)">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="number" matInput [(ngModel)]="template.radius" placeholder="标签纸弧度(mm)">
+                    </mat-form-field>
+                    
+                    <mat-select [(ngModel)]="template.primary_font" placeholder="首选字体">
+                        <mat-option *ngFor="let font of font_list" [value]="font.id">
+                            {{font.family_name}} - {{font.weight_name}} - {{font.pixel_size}} - {{font.chars_number}}
+                        </mat-option>
+                    </mat-select>
+
+                    <mat-select [(ngModel)]="template.secondary_font" placeholder="备选字体">
+                        <mat-option *ngFor="let font of font_list" [value]="font.id">
+                            {{font.family_name}} - {{font.weight_name}} - {{font.pixel_size}} - {{font.chars_number}}
+                        </mat-option>
+                    </mat-select>
+
+                </div>
+
+
+                <div class="label-attr" *ngFor="let qr of template.qr_codes">
+                    <div class="label-attr-title">
+                        二维码<i class="mdi mdi-delete-forever delete" (click)="onDeleteQrCode(qr)" ></i>
+                    </div>
+                    <div class="label-attr-content">
+                    <mat-form-field class="attr-var">
+                        <input type="text" matInput [(ngModel)]="qr.variable" placeholder="变量名">
+                    </mat-form-field>
+                    <mat-form-field class="attr-var">
+                        <input type="text" matInput [(ngModel)]="qr.default" placeholder="默认值">
+                    </mat-form-field>
+                    <mat-form-field class="literal-offset">
+                        <input type="number" matInput [(ngModel)]="qr.offset.x" placeholder="横向偏移">
+                    </mat-form-field>
+                    <mat-form-field class="literal-offset">
+                        <input type="number" matInput [(ngModel)]="qr.offset.y" placeholder="纵向偏移">
+                    </mat-form-field>
+                    <mat-form-field class="literal-offset">
+                        <input type="number" matInput [(ngModel)]="qr.size.width" placeholder="宽度">
+                    </mat-form-field>
+                    <mat-form-field class="literal-offset">
+                        <input type="number" matInput [(ngModel)]="qr.size.height" placeholder="高度">
+                    </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                         
+                <div class="label-attr" *ngFor="let literal of template.literals">
+                    <div class="label-attr-title">
+                    固定文本<i class="mdi mdi-delete-forever delete" (click)="onDeleteLiteral(literal)" ></i>
+                    </div>
+                    <div class="label-attr-content">
+                    <mat-form-field class="literal-text">
+                        <input type="text" matInput [(ngModel)]="literal.text" placeholder="文本">
+                    </mat-form-field>
+                    <mat-form-field class="literal-offset">
+                        <input type="number" matInput [(ngModel)]="literal.offset.x" placeholder="横向偏移(mm)">
+                    </mat-form-field>
+                    <mat-form-field class="literal-offset">
+                        <input type="number" matInput [(ngModel)]="literal.offset.y" placeholder="纵向偏移(mm)">
+                    </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                    
+                <div class="label-attr" *ngFor="let variable of template.attributes">
+                    <div class="label-attr-title">
+                        属性标签<i class="mdi mdi-delete-forever delete" (click)="onDeleteAttribute(variable)" ></i>
+                    </div>
+
+                    <div class="label-attr-content">
+                        <mat-form-field class="attr-var">
+                            <input type="text" matInput [(ngModel)]="variable.variable" placeholder="变量名">
+                        </mat-form-field>
+                        <mat-form-field class="attr-var">
+                            <input type="text" matInput [(ngModel)]="variable.default" placeholder="默认值">
+                        </mat-form-field>
+                        <mat-form-field class="literal-offset">
+                            <input type="number" matInput [(ngModel)]="variable.offset.x" placeholder="横向偏移">
+                        </mat-form-field>
+                        <mat-form-field class="literal-offset">
+                            <input type="number" matInput [(ngModel)]="variable.offset.y" placeholder="纵向偏移">
+                        </mat-form-field>
+                        <mat-form-field class="attr-title">
+                            <input type="text" matInput [(ngModel)]="variable.label" placeholder="标题">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="attr-button-panel">
+            <button mat-mini-fab (click)="onReturnList()" color="primary">
+                <i class="mdi mdi-backburger">返回</i>
+            </button>
+            <button mat-mini-fab (click)="onRefreshDisplay()" color="primary">
+                <i class="mdi mdi-refresh">查看</i>
+            </button>
+            <button mat-mini-fab (click)="onSaveTemplate()" color="primary">
+                <i class="mdi mdi-content-save">保存</i>
+            </button>
+            <button mat-mini-fab (click)="onPrintTemplate()" color="primary">
+                <i class="mdi mdi-printer">答应</i>
+            </button>
+            <button mat-mini-fab [matMenuTriggerFor]="addAttrMenu" color="primary">
+                <i class="mdi mdi-plus">添加</i>
+            </button>
+        </div>
+        
+    </div>
+
+    <div class="test-panel">
+        <textarea [(ngModel)]="test_input" placeholder="测试数据"></textarea>
+    </div>
+    <div class="test-panel">
+        <textarea [(ngModel)]="input_schema" placeholder="输入数据Schema"></textarea>
+    </div>
+</div>
+
+<mat-menu #addAttrMenu="matMenu">
+    <button mat-menu-item (click)="onAddQrCode()" >二维码</button>
+    <button mat-menu-item (click)="onAddAttribute()" >变量</button>
+    <button mat-menu-item (click)="onAddLiteral()" >文本</button>
+</mat-menu>

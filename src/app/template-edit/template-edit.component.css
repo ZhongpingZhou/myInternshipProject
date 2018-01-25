@@ -1,0 +1,95 @@
+.page-body.template-edit-page {
+    display: flex;
+    padding: 10px 0 0 0;
+    min-width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.label-panel {
+    min-width: 800px;
+    border: solid 1px #EEE;
+}
+
+.attr-panel {
+    min-width: 800px;
+    max-width: 800px;
+    margin: 5px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px #EEE;
+    padding: 10px 0 10px 0;
+}
+
+.test-panel {
+    min-width: 760px;
+    min-height: 360px;
+    border: solid 1px #EEE;
+    margin: 5px 0 0 0;
+    padding: 20px;
+}
+
+.test-panel textarea {
+    width: 760px;
+    height: 360px;
+    border: 0 hidden;
+}
+
+.attr-list {
+    flex-grow: 1;
+}
+
+.attr-button-panel {
+    margin: 0 10px 0 10px;
+}
+
+.attr-item.font-selection {
+    padding: 20px;
+}
+
+.attr-item.font-selection mat-select {
+    min-width: 300px;
+    margin: 10px 0 10px 0;
+}
+.attr-item.font-selection mat-input-container {
+    width: 145px;
+}
+.attr-item.font-selection .template-name {
+    width: 600px;
+}
+.label-attr {
+    margin: 20px 0 0 0;
+    border: solid 1px #DDD;
+}
+.label-attr mat-input-container.literal-text {min-width: 310px;}
+
+.label-attr mat-input-container.literal-offset {
+    min-width: 145px;
+}
+.attr-button-panel button {
+    margin: 5px 0 5px 0;
+}
+.label-attr .label-attr-title {
+    background-color: #DDD;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px 0 10px;
+    display: flex;
+    color: #666;
+    text-align: right;
+    /* width: 100%; */
+    justify-content: space-between;
+}
+
+.label-attr .label-attr-content {
+    padding: 10px;
+}
+.label-attr .label-attr-title .delete {
+    color: darkred;
+}
+.label-attr .label-attr-title .delete:hover {
+    color: red;
+    cursor: pointer;
+}
